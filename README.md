@@ -1,4 +1,4 @@
-# Neural Sequence Generator
+# BareNet
 
 A character-level recurrent neural network running bare-metal on an ATmega32U4 microcontroller. It autocompletes Linux shell commands in real time using only fixed-point integer math. No floating point, no OS, no frameworks. Type a command prefix over serial, press a button, and the device predicts what comes next.
 
