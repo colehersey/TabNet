@@ -1,8 +1,8 @@
 # Neural Sequence Generator
 
-A character-level recurrent neural network running bare-metal on an ATmega32U4 microcontroller. It autocompletes Linux shell commands in real time using only fixed-point integer math — no floating point, no OS, no frameworks. Type a command prefix over serial, press a button, and the device predicts what comes next.
+A character-level recurrent neural network running bare-metal on an ATmega32U4 microcontroller. It autocompletes Linux shell commands in real time using only fixed-point integer math. No floating point, no OS, no frameworks. Type a command prefix over serial, press a button, and the device predicts what comes next.
 
-The entire model — 96 hidden units, 17KB of weights, piecewise-linear tanh, int32 accumulators — fits in 24KB of flash and 549 bytes of RAM, and runs inference in under 15ms per keystroke at 8 MHz.
+The entire model fits in 24KB of flash and 549 bytes of RAM, and runs inference in under 15ms per keystroke at 8 MHz.
 
 ## Demo
 
@@ -124,7 +124,7 @@ The core technical challenge of this project: taking a float32 PyTorch model and
 acc[i] = Wxh_q[tok][i] * WXH_SCALE + sum_j(Whh_q[j][i] * h[j])
 ```
 
-WXH_SCALE = round(S_wxh * 32767 / S_whh) brings the input contribution onto the same integer scale as the recurrent contribution. No per-product shift is needed — int8 * int16 products summed over 96 terms fit comfortably in int32.
+WXH_SCALE = round(S_wxh * 32767 / S_whh) brings the input contribution onto the same integer scale as the recurrent contribution. No per-product shift is needed, int8 * int16 products summed over 96 terms fit comfortably in int32.
 
 **Q_SHIFT aligns the tanh input scale.** After accumulation, the result is right-shifted before entering the piecewise tanh:
 
@@ -132,9 +132,9 @@ WXH_SCALE = round(S_wxh * 32767 / S_whh) brings the input contribution onto the 
 h[i] = tanh_q15((acc[i] + (1L << (Q_SHIFT - 1))) >> Q_SHIFT);
 ```
 
-Q_SHIFT is chosen so the firmware's tanh breakpoint (8192 in Q15) corresponds to the same activation level as the training breakpoint (0.25 in float). The formula is `Q_SHIFT = closest_to_1(log2(127 / S_whh))` — picking the integer shift whose scale factor `127 / (S_whh * 2^Q_SHIFT)` is nearest to 1.0. The `+ (1L << (Q_SHIFT - 1))` term adds rounding instead of truncation, eliminating a systematic negative bias.
+Q_SHIFT is chosen so the firmware's tanh breakpoint (8192 in Q15) corresponds to the same activation level as the training breakpoint (0.25 in float). The formula is `Q_SHIFT = closest_to_1(log2(127 / S_whh))` & picking the integer shift whose scale factor `127 / (S_whh * 2^Q_SHIFT)` is nearest to 1.0. The `+ (1L << (Q_SHIFT - 1))` term adds rounding instead of truncation, eliminating a systematic negative bias.
 
-**WHY_PROD_SHIFT prevents int32 overflow in the output layer.** Since Why is int16 and h is int16, each product can reach 32767^2 ~ 1.07 billion. Summed over 96 hidden units this would overflow int32. Each product is right-shifted by WHY_PROD_SHIFT=6 before accumulation. Since all logits shift equally, argmax is preserved — the shift is lossless for prediction.
+**WHY_PROD_SHIFT prevents int32 overflow in the output layer.** Since Why is int16 and h is int16, each product can reach 32767^2 ~ 1.07 billion. Summed over 96 hidden units this would overflow int32. Each product is right-shifted by WHY_PROD_SHIFT=6 before accumulation. Since all logits shift equally, argmax is preserved & the shift is lossless for prediction.
 
 **Piecewise-linear tanh in Q15.** The activation function is a three-segment approximation:
 
@@ -158,7 +158,7 @@ def fw_tanh(x):
                        torch.sign(x_c) * (bp + (x_c.abs() - bp) * 0.75))
 ```
 
-This is fully differentiable (gradients: 1.0 in linear region, 0.75 in interpolated, 0.0 at saturation) and lets the model learn weights that are adapted to the approximation it will actually run with. Without this, the model trains against `tanh(x)` but runs against a fundamentally different function — the firmware's piecewise tanh returns ~37% of the true tanh output for moderate activations (e.g., pre-activation 1.0: firmware gives 0.28, true tanh gives 0.76). Hidden states are systematically too small, weakening the recurrent connection and causing prediction failures.
+This is fully differentiable (gradients: 1.0 in linear region, 0.75 in interpolated, 0.0 at saturation) and lets the model learn weights that are adapted to the approximation it will actually run with. Without this, the model trains against `tanh(x)` but runs against a fundamentally different function. The firmware's piecewise tanh returns ~37% of the true tanh output for moderate activations (e.g., pre-activation 1.0: firmware gives 0.28, true tanh gives 0.76). Hidden states are systematically too small, weakening the recurrent connection and causing prediction failures.
 
 ### Benchmark and Diagnostic Framework
 
@@ -171,7 +171,7 @@ This is fully differentiable (gradients: 1.0 in linear region, 0.75 in interpola
 | C | dequantized int8/16 | torch.tanh | Isolates weight quantization error |
 | D | int8/16 quantized | Q15 piecewise tanh | Full firmware simulation |
 
-When the model is trained with `USE_FW_TANH=True`, **B vs D is the primary metric** — both use the same activation function, so the comparison isolates the fixed-point arithmetic gap. A vs D conflates tanh shape difference with quantization error and is tracked as a secondary metric.
+When the model is trained with `USE_FW_TANH=True`, **B vs D is the primary metric** both use the same activation function, so the comparison isolates the fixed-point arithmetic gap. A vs D conflates tanh shape difference with quantization error and is tracked as a secondary metric.
 
 Break attribution: if A != B, the tanh approximation is the cause. If A != C, weight quantization is the cause. If A = B = C but C != D, the fixed-point state arithmetic is the cause.
 
@@ -217,7 +217,7 @@ All buttons are active-low with internal pull-ups, debounced at 20ms. The LCD is
 
 ## Engineering History
 
-The path from "model outputs garbage" to "model predicts `make clean` correctly" involved 11 phases of systematic debugging. The full record is in [CHANGELOG.md](CHANGELOG.md). Key milestones:
+The path from "model outputs garbage" to "model predicts `make clean` correctly" involved 11 phases of systematic debugging.
 
 **Phase 1-2: Capacity scaling.** Started with HIDDEN_SIZE=16 on a 165-line AVR assembly corpus. The model could only learn bigram statistics. Expanded to 96 hidden units and 619 lines of shell commands. Float32 model worked well (loss ~0.33), but quantized predictions were random.
 
@@ -242,4 +242,6 @@ The path from "model outputs garbage" to "model predicts `make clean` correctly"
 
 ## License
 
-Educational project. No license specified.
+MIT Licensed.
+
+If you build on this work, attribution to the original repository would be appreciated. 
