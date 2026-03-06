@@ -1,0 +1,619 @@
+ls
+ls
+ls
+ls
+ls
+ls -l
+ls -l
+ls -l
+ls -l
+ls -la
+ls -la
+ls -la
+ls -la
+ls -lh
+ls -lh
+ls -lh
+ls -a
+ls -a
+ls -a
+ls -1
+ls -1
+ls firmware
+ls firmware
+ls firmware
+ls firmware/
+ls firmware/
+ls trainer
+ls trainer
+ls trainer/
+ls trainer/
+ls src
+ls src
+ls src/
+ls build
+ls build
+ls build/
+ls docs
+ls docs
+ls docs/
+ls -l firmware
+ls -l firmware/
+ls -l trainer
+ls -l trainer/
+ls -la firmware
+ls -la src
+ls -la build
+ls -la docs
+ls -lh firmware/
+ls -l src/
+ls -l build/
+ls -l docs/
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd firmware
+cd firmware
+cd firmware
+cd firmware
+cd firmware/
+cd firmware/
+cd trainer
+cd trainer
+cd trainer
+cd trainer/
+cd trainer/
+cd src
+cd src
+cd src
+cd src/
+cd build
+cd build
+cd build
+cd build/
+cd docs
+cd docs
+cd docs
+cd docs/
+cd ../firmware
+cd ../firmware
+cd ../trainer
+cd ../trainer
+cd ../src
+cd ../src
+cd ../build
+cd ../build
+cd /tmp
+cd /home
+cd
+cd
+cd
+cd ..
+cd ..
+cd firmware
+cd firmware
+cd trainer
+cd trainer
+cd src
+cd src
+cd build
+cd docs
+cat main.c
+cat main.c
+cat main.c
+cat main.c
+cat rnn.c
+cat rnn.c
+cat rnn.c
+cat rnn.c
+cat glcd.c
+cat glcd.c
+cat glcd.c
+cat config.h
+cat config.h
+cat config.h
+cat weights.h
+cat weights.h
+cat vocab.h
+cat vocab.h
+cat makefile
+cat makefile
+cat makefile
+cat readme.md
+cat readme.md
+cat train.py
+cat train.py
+cat export.py
+cat export.py
+cat corpus.txt
+cat corpus.txt
+cat main.h
+cat rnn.h
+cat glcd.h
+head main.c
+head main.c
+head rnn.c
+head rnn.c
+head glcd.c
+head config.h
+head config.h
+head makefile
+head -n 20 main.c
+head -n 20 main.c
+head -n 20 rnn.c
+head -n 20 rnn.c
+head -n 10 main.c
+head -n 10 main.c
+head -n 10 rnn.c
+head -n 10 config.h
+head -n 10 glcd.c
+head -n 50 main.c
+tail main.c
+tail main.c
+tail rnn.c
+tail rnn.c
+tail glcd.c
+tail config.h
+tail -n 20 main.c
+tail -n 20 main.c
+tail -n 20 rnn.c
+tail -n 20 rnn.c
+tail -n 10 main.c
+tail -n 10 config.h
+tail -n 10 glcd.c
+tail -n 50 main.c
+grep -r main .
+grep -r main .
+grep -r main .
+grep -r main firmware
+grep -r main firmware
+grep -r include .
+grep -r include .
+grep -r include firmware
+grep -r include firmware
+grep -r define .
+grep -r define .
+grep -r define firmware
+grep -r define config.h
+grep -r define config.h
+grep -n main main.c
+grep -n main main.c
+grep -n main main.c
+grep -n include main.c
+grep -n include rnn.c
+grep -n include glcd.c
+grep -n void main.c
+grep -n void rnn.c
+grep -n void glcd.c
+grep -rn hidden .
+grep -rn hidden firmware
+grep -rn vocab .
+grep -rn vocab firmware
+grep -r uint8 .
+grep -r uint8 firmware
+grep -r int8 .
+grep -r int8 firmware
+grep -r progmem .
+grep -r progmem firmware
+grep -r spi .
+grep -r spi firmware
+grep -rn todo .
+grep -rn todo .
+grep -rn fixme .
+grep -r error .
+grep -r error firmware
+grep -l main main.c
+grep -l void rnn.c
+grep -rn define config.h
+grep -rn include main.c
+grep -r init .
+grep -r init firmware
+make
+make
+make
+make
+make
+make
+make
+make clean
+make clean
+make clean
+make clean
+make clean
+make all
+make all
+make all
+make all
+make flash
+make flash
+make flash
+make flash
+make build
+make build
+make build
+make -j4
+make -j4
+make -j4
+make debug
+make debug
+make clean all
+make clean all
+make clean flash
+make clean flash
+make -j4 all
+make -f makefile
+git status
+git status
+git status
+git status
+git status
+git status
+git status
+git status
+git diff
+git diff
+git diff
+git diff
+git diff
+git diff --staged
+git diff --staged
+git diff --staged
+git diff main.c
+git diff main.c
+git diff rnn.c
+git diff config.h
+git diff glcd.c
+git log
+git log
+git log
+git log
+git log --oneline
+git log --oneline
+git log --oneline
+git log --oneline
+git log --oneline -10
+git log --oneline -5
+git add .
+git add .
+git add .
+git add .
+git add .
+git add .
+git add main.c
+git add main.c
+git add main.c
+git add rnn.c
+git add rnn.c
+git add config.h
+git add config.h
+git add glcd.c
+git add makefile
+git add firmware/
+git add trainer/
+git commit -m update rnn
+git commit -m update rnn
+git commit -m update rnn
+git commit -m fix build
+git commit -m fix build
+git commit -m fix build
+git commit -m add weights
+git commit -m add weights
+git commit -m update config
+git commit -m update config
+git commit -m update glcd
+git commit -m fix serial
+git commit -m clean up
+git commit -m initial commit
+git commit -m update corpus
+git commit -m retrain model
+git commit -m fix bug
+git branch
+git branch
+git branch
+git branch
+git branch -a
+git branch -a
+git branch dev
+git checkout main
+git checkout main
+git checkout main
+git checkout dev
+git checkout -b feature/rnn
+git checkout -b feature/glcd
+git pull
+git pull
+git pull
+git pull
+git push
+git push
+git push
+git push
+git fetch
+git fetch
+git fetch
+git remote -v
+git remote -v
+git stash
+git stash
+git stash pop
+git stash pop
+git clone
+mv main.c src/main.c
+mv main.c src/main.c
+mv main.c src/
+mv rnn.c src/rnn.c
+mv rnn.c src/rnn.c
+mv rnn.c src/
+mv glcd.c src/glcd.c
+mv glcd.c src/
+mv config.h firmware/config.h
+mv config.h firmware/
+mv config.h firmware/
+mv weights.h firmware/
+mv weights.h firmware/
+mv vocab.h firmware/
+mv vocab.h firmware/
+mv notes.txt docs/
+mv readme.md docs/
+mv todo.txt docs/
+mv old.c backup/
+mv old.h backup/
+mv main.o build/
+mv rnn.o build/
+mv temp.c src/
+cp main.c main.c.bak
+cp main.c main.c.bak
+cp main.c main.c.bak
+cp rnn.c rnn.c.bak
+cp rnn.c rnn.c.bak
+cp rnn.c rnn.c.bak
+cp config.h config.h.bak
+cp config.h config.h.bak
+cp glcd.c glcd.c.bak
+cp glcd.c glcd.c.bak
+cp main.c build/main.c
+cp main.c build/
+cp rnn.c build/rnn.c
+cp rnn.c build/
+cp glcd.c build/
+cp -r src build/src
+cp -r src build/
+cp -r firmware build/
+cp -r docs backup/
+cp -r docs backup/
+cp makefile makefile.bak
+cp train.py train.py.bak
+rm main.o
+rm main.o
+rm main.o
+rm rnn.o
+rm rnn.o
+rm rnn.o
+rm glcd.o
+rm glcd.o
+rm -f main.o
+rm -f main.o
+rm -f main.o
+rm -f rnn.o
+rm -f rnn.o
+rm -f glcd.o
+rm -f glcd.o
+rm -r build
+rm -r build
+rm -r build
+rm -rf build
+rm -rf build
+rm -rf build
+rm -rf build/
+rm -rf build/
+rm notes.txt
+rm todo.txt
+rm old.c
+rm old.h
+rm temp.c
+rm -f old.c
+rm -f old.h
+rm -f temp.c
+rm -f temp.h
+rm -f main.c.bak
+rm -f rnn.c.bak
+rm -f model.pt
+rm -rf .venv
+mkdir build
+mkdir build
+mkdir build
+mkdir build
+mkdir -p build/out
+mkdir -p build/out
+mkdir -p build/obj
+mkdir -p src/include
+mkdir docs
+mkdir docs
+mkdir backup
+mkdir backup
+mkdir -p firmware/gen
+touch main.c
+touch main.c
+touch rnn.c
+touch rnn.c
+touch glcd.c
+touch config.h
+touch makefile
+touch makefile
+touch readme.md
+touch notes.txt
+touch todo.txt
+touch test.c
+find . -name main.c
+find . -name main.c
+find . -name main.c
+find . -name rnn.c
+find . -name rnn.c
+find . -name glcd.c
+find . -name config.h
+find . -name makefile
+find . -type f
+find . -type f
+find . -type f
+find . -type d
+find . -type d
+find firmware -name main.c
+find firmware -name rnn.c
+find . -name readme.md
+find . -name train.py
+gcc -c main.c
+gcc -c main.c
+gcc -c rnn.c
+gcc -c rnn.c
+gcc -c glcd.c
+gcc -c glcd.c
+gcc -o app main.c
+gcc -o app main.c
+gcc -c main.c -o main.o
+gcc -c rnn.c -o rnn.o
+gcc -c glcd.c -o glcd.o
+avr-gcc -c main.c
+avr-gcc -c main.c
+avr-gcc -c rnn.c
+avr-gcc -c rnn.c
+avr-gcc -c glcd.c
+avr-gcc -c glcd.c
+avr-gcc -o firmware.elf main.c rnn.c
+avr-gcc -o firmware.elf main.c rnn.c
+avr-gcc -o firmware.elf main.c rnn.c glcd.c
+python3 train.py
+python3 train.py
+python3 train.py
+python3 train.py
+python3 train.py
+python3 export.py
+python3 export.py
+python3 export.py
+python3 export.py
+python3 export.py
+python3 -m venv .venv
+python3 -m venv .venv
+python3 -m venv .venv
+pip install torch
+pip install torch
+pip install numpy
+pip install numpy
+pip install -r requirements.txt
+pip install -r requirements.txt
+pip install -r requirements.txt
+pwd
+pwd
+pwd
+pwd
+whoami
+whoami
+whoami
+uname -a
+uname -a
+uname -a
+hostname
+hostname
+date
+date
+date
+uptime
+uptime
+id
+env
+clear
+clear
+clear
+clear
+clear
+echo hello
+echo hello
+echo hello
+echo done
+echo done
+echo done
+echo ok
+echo ok
+echo building firmware
+echo training model
+echo flashing device
+echo clean build
+echo test passed
+tar -czf firmware.tgz firmware
+tar -czf firmware.tgz firmware
+tar -czf firmware.tgz firmware/
+tar -czf src.tgz src
+tar -czf src.tgz src
+tar -xzf firmware.tgz
+tar -xzf firmware.tgz
+tar -xzf src.tgz
+tar -xzf src.tgz
+zip -r firmware.zip firmware
+zip -r firmware.zip firmware
+zip -r src.zip src
+zip -r src.zip src
+unzip firmware.zip
+unzip src.zip
+chmod 755 build.sh
+chmod 755 build.sh
+chmod 755 flash.sh
+chmod 755 flash.sh
+chmod 644 readme.md
+chmod 644 makefile
+ps
+ps
+ps aux
+ps aux
+kill 1234
+kill 1234
+kill -9 1234
+kill -9 1234
+wc -l main.c
+wc -l main.c
+wc -l main.c
+wc -l rnn.c
+wc -l rnn.c
+wc -l glcd.c
+wc -l corpus.txt
+wc -l config.h
+wc -c main.c
+wc -c rnn.c
+diff main.c rnn.c
+diff main.c rnn.c
+diff config.h config.h.bak
+diff config.h config.h.bak
+diff main.c main.c.bak
+diff rnn.c rnn.c.bak
+vim main.c
+vim main.c
+vim main.c
+vim rnn.c
+vim rnn.c
+vim config.h
+vim config.h
+vim makefile
+vim makefile
+nano main.c
+nano main.c
+nano rnn.c
+nano rnn.c
+nano config.h
+nano makefile
+df -h
+df -h
+du -sh .
+du -sh .
+du -sh firmware
+du -sh firmware
+du -sh build
+du -sh src
+free -h
+free -h
+history
+history
+man gcc
+man make
+man grep
+man find
